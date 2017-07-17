@@ -1,14 +1,22 @@
 describe Cell do
+  describe '#x #y' do
+    let(:cell) { Cell.new(12, 23, true) }
+    it '位置が取得できること' do
+      expect(cell.x).to eq 12
+      expect(cell.y).to eq 23
+    end
+  end
+
   describe '#alive?' do
     context '生きている場合' do
-      let(:alive_cell) { Cell.new(true) }
+      let(:alive_cell) { Cell.new(1, 2, true) }
       it '生きてること' do
         expect(alive_cell.alive?).to eq true
       end
     end
 
     context '死んでいる場合' do
-      let(:dead_cell) { Cell.new(false) }
+      let(:dead_cell) { Cell.new(1, 2, false) }
       it '死んでいること' do
         expect(dead_cell.alive?).to eq false
       end
@@ -16,7 +24,7 @@ describe Cell do
   end
 
   describe '#die' do
-    let(:alive_cell) { Cell.new(true) }
+    let(:alive_cell) { Cell.new(1, 2, true) }
     it '死ぬこと' do
       alive_cell.die
       expect(alive_cell.alive?).to eq false
@@ -24,7 +32,7 @@ describe Cell do
   end
 
   describe '#born' do
-    let(:dead_cell) { Cell.new(false) }
+    let(:dead_cell) { Cell.new(1, 2, false) }
     it '死んでいること' do
       dead_cell.born
       expect(dead_cell.alive?).to eq true
@@ -33,7 +41,7 @@ describe Cell do
 
   describe '#next' do
     context '生きている場合' do
-      let(:alive_cell) { Cell.new(true) }
+      let(:alive_cell) { Cell.new(1, 2, true) }
       [
         [0, false], # 過疎
         [1, false], # 過疎
@@ -55,7 +63,7 @@ describe Cell do
     end
 
     context '死んでいる場合' do
-      let(:dead_cell) { Cell.new(false) }
+      let(:dead_cell) { Cell.new(1, 2, false) }
       [
         [0, false],
         [1, false],

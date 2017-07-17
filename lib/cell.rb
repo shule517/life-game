@@ -1,5 +1,8 @@
 class Cell
-  def initialize(alive)
+  attr_reader :x, :y
+  def initialize(x, y, alive)
+    @x = x
+    @y = y
     @alive = alive
   end
 
