@@ -9,4 +9,15 @@ class WorldGenerator
       end
     end
   end
+
+  def generate_random(width, height)
+    World.new.tap do |world|
+      (0..height).each do |y|
+        (0..width).each do |x|
+          cell = Cell.new(x, y, [true, false].sample)
+          world.add_cell(cell)
+        end
+      end
+    end
+  end
 end
