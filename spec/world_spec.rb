@@ -27,12 +27,21 @@ describe World do
     end
   end
 
-  # describe '#to_s' do
-  #   let (:world) { World.new }
-  #   context 'セルがない場合' do
-  #     it 'nilを返すこと' do
-  #       expect(world.at(0, 0)).to eq nil
-  #     end
-  #   end
-  # end
+  describe '#to_s' do
+    let (:world) { World.new }
+    context 'セルがない場合' do
+      it 'nilを返すこと' do
+        world.add_cell(Cell.new(0, 0, true))
+        world.add_cell(Cell.new(1, 0, false))
+        world.add_cell(Cell.new(2, 0, true))
+        world.add_cell(Cell.new(0, 1, true))
+        world.add_cell(Cell.new(1, 1, false))
+        world.add_cell(Cell.new(2, 1, false))
+        expect(world.to_s).to eq <<~MAP
+          ■□■
+          ■□□
+        MAP
+      end
+    end
+  end
 end

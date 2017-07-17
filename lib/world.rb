@@ -18,4 +18,12 @@ class World
   def height
     @cells.max_by(&:y).y + 1
   end
+
+  def to_s
+    (0..height).flat_map { |y|
+      (0..width).flat_map { |x|
+        at(x, y).to_s
+      }.join
+    }.join("\n")
+  end
 end
