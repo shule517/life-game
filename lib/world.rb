@@ -28,10 +28,8 @@ class World
   end
 
   def neighbours(x, y)
-    [-1, 0, 1].flat_map { |y_offset|
-      [-1, 0, 1].flat_map do |x_offset|
-        at(x + x_offset, y + y_offset) unless x_offset == 0 && y_offset == 0
-      end
+    ([-1, 0, 1].product([-1, 0, 1]) - [[0, 0]]).map { |x_offset, y_offset|
+      at(x + x_offset, y + y_offset)
     }.compact
   end
 
