@@ -10,17 +10,17 @@ class LifeGame
   end
 
   def width
-    @stage[0].size - 1
+    @stage.first.size
   end
 
   def height
-    @stage.size - 1
+    @stage.size
   end
 
   def neighbours(i, j)
-    [[-1, 0], [-1, 1], [0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1]]
+    [-1,0,1].product([-1,0,1]) - [[0,0]]
       .map { |ioff, joff| [i + ioff, j + joff] }
-      .select { |i, j| i.between?(0, height) && j.between?(0, width) }
+      .select { |i, j| i.between?(0, height - 1) && j.between?(0, width - 1) }
   end
 
   def neighbours_alive_count(i, j)
