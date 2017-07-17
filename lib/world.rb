@@ -26,4 +26,19 @@ class World
       }.join
     }.join("\n")
   end
+
+  def neighbours(x, y)
+    [-1, 0, 1].flat_map { |y_offset|
+      [-1, 0, 1].flat_map do |x_offset|
+        at(x + x_offset, y + y_offset) unless x_offset == 0 && y_offset == 0
+      end
+    }.compact
+  end
+
+  def neighbours_alive_count(x, y)
+    neighbours(x, y).select(&:alive?).size
+  end
+
+  def next
+  end
 end

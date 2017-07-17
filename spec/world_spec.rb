@@ -17,6 +17,20 @@ describe World do
     end
   end
 
+  describe '#neighbours_alive_count' do
+    let (:world) { WorldGenerator.new.generate(map_text) }
+    let (:map_text) {
+      <<~MAP
+        □■□□
+        □■□■
+        ■□□■
+      MAP
+    }
+    it '次の世代を表示すること' do
+      expect(world.neighbours_alive_count(2, 1)).to eq 4
+    end
+  end
+
   describe '#width #height' do
     let (:world) { World.new }
     it 'セルが生成されること' do
@@ -44,4 +58,23 @@ describe World do
       end
     end
   end
+
+  # describe '#next' do
+  #   let (:world) { WorldGenerator.new.generate(map_text) }
+  #   let (:map_text) {
+  #     <<~MAP
+  #       □■□□
+  #       □■□■
+  #       ■□□■
+  #     MAP
+  #   }
+  #   it '次の世代を表示すること' do
+  #     world.next
+  #     expect(world.to_s).to eq <<~MAP
+  #       □□■□
+  #       ■□■□
+  #       □□■□
+  #     MAP
+  #   end
+  # end
 end
