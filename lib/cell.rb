@@ -6,4 +6,12 @@ class Cell
   def alive?
     @alive
   end
+
+  def die
+    @alive = false
+  end
+
+  def born
+    @alive = true
+  end
 end
