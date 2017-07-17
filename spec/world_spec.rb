@@ -59,22 +59,22 @@ describe World do
     end
   end
 
-  # describe '#next' do
-  #   let (:world) { WorldGenerator.new.generate(map_text) }
-  #   let (:map_text) {
-  #     <<~MAP
-  #       □■□□
-  #       □■□■
-  #       ■□□■
-  #     MAP
-  #   }
-  #   it '次の世代を表示すること' do
-  #     world.next
-  #     expect(world.to_s).to eq <<~MAP
-  #       □□■□
-  #       ■□■□
-  #       □□■□
-  #     MAP
-  #   end
-  # end
+  describe '#next' do
+    let (:world) { WorldGenerator.new.generate(map_text) }
+    let (:map_text) {
+      <<~MAP
+        □■□□
+        □■□■
+        ■□□■
+      MAP
+    }
+    it '次の世代を表示すること' do
+      world.next
+      expect(world.to_s).to eq <<~MAP
+        □□■□
+        ■■□□
+        □□■□
+      MAP
+    end
+  end
 end

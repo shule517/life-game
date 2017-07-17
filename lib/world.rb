@@ -40,5 +40,10 @@ class World
   end
 
   def next
+    @cells.map { |cell|
+      [cell, neighbours_alive_count(cell.x, cell.y)]
+    }.each do |cell, neighbours_alive_count|
+      cell.next(neighbours_alive_count)
+    end
   end
 end
