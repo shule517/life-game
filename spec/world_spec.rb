@@ -7,4 +7,13 @@ describe World do
       expect(world.at(1, 2).alive?).to eq true
     end
   end
+
+  describe '#at' do
+    let (:world) { World.new }
+    context 'セルがない場合' do
+      it 'nilを返すこと' do
+        expect(world.at(0, 0)).to eq nil
+      end
+    end
+  end
 end
