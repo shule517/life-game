@@ -25,4 +25,8 @@ class Cell
       born if arround_alive_count == 3
     end
   end
+
+  def to_s
+    alive? ? '■' : '□'
+  end
 end

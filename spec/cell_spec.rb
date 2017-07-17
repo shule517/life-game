@@ -84,4 +84,20 @@ describe Cell do
       end
     end
   end
+
+  describe '#to_s' do
+    context '生きている場合' do
+      let(:alive_cell) { Cell.new(1, 2, true) }
+      it '生きてること' do
+        expect(alive_cell.to_s).to eq '■'
+      end
+    end
+
+    context '死んでいる場合' do
+      let(:dead_cell) { Cell.new(1, 2, false) }
+      it '死んでいること' do
+        expect(dead_cell.to_s).to eq '□'
+      end
+    end
+  end
 end
